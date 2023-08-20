@@ -1,0 +1,6 @@
+display-config:
+  defaultDisplay: ---
+  useKeyWhenNotPresent: true
+  displayMap:
+    888: Special Offering Hymn
+    777: Pasalamat
