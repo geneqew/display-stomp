@@ -2,5 +2,9 @@ display-config:
   defaultDisplay: ---
   useKeyWhenNotPresent: true
   displayMap:
-    888: Special Offering Hymn
-    777: Pasalamat
+    000: DOX
+    888: Pasalamat
+logging:
+  file:
+    name: inc-display.log
+    path: /home/pi4/logs
