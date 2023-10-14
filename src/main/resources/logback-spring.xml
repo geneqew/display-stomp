@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="10 seconds">
+
+    <property name="LOG_PATH" value="/home/pi/logs"  />
+
+    <appender name="LOG_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/inc-display.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/inc-display.%d{yyyy-MM-dd}.%i.log
+            </fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>100MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d [%thread] [%-5level] %logger{35} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="ASYNC_LOG" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="LOG_FILE" />
+    </appender>
+
+
+    <root level="INFO">
+        <appender-ref ref="ASYNC_LOG" />
+    </root>
+
+</configuration>

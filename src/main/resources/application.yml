@@ -4,7 +4,3 @@ display-config:
   displayMap:
     000: DOX
     888: Pasalamat
-logging:
-  file:
-    name: inc-display.log
-    path: /home/pi/logs
