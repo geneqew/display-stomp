@@ -1,0 +1,12 @@
+body {
+  background-color: #000;
+  color: #FFF;
+  display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.content {
+    display: block;
+	text-align: center;
+    font-size: 40vw;
+}

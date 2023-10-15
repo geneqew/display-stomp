@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration scan="true" scanPeriod="10 seconds">
 
-    <property name="LOG_PATH" value="/home/pi/logs"  />
+    <property name="LOG_PATH" value="/tmp/logs"  />
 
     <appender name="LOG_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOG_PATH}/inc-display.log</file>
