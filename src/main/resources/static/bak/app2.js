@@ -1,5 +1,5 @@
 const stompClient = new StompJs.Client({
-  brokerURL: "ws://localhost:8080/display-app",
+  brokerURL: "ws://pi4.local:8080/display-app",
 });
 
 stompClient.onConnect = (frame) => {
