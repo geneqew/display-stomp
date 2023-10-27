@@ -1,61 +1,60 @@
 const stompClient = new StompJs.Client({
-    brokerURL: 'ws://pi4.local:8080/display-app'
+  brokerURL: "ws://localhost:8080/display-app",
 });
 
 stompClient.onConnect = (frame) => {
-    setConnected(true);
-    console.log('Connected: ' + frame);
-    stompClient.subscribe('/topic/display', (greeting) => {
-        showGreeting(JSON.parse(greeting.body).textToDisplay);
-    });
+  setConnected(true);
+  console.log("Connected: " + frame);
+  stompClient.subscribe("/topic/display", (greeting) => {
+    showGreeting(JSON.parse(greeting.body).textToDisplay);
+  });
 };
 
 stompClient.onWebSocketError = (error) => {
-    console.error('Error with websocket', error);
+  console.error("Error with websocket", error);
 };
 
 stompClient.onStompError = (frame) => {
-    console.error('Broker reported error: ' + frame.headers['message']);
-    console.error('Additional details: ' + frame.body);
+  console.error("Broker reported error: " + frame.headers["message"]);
+  console.error("Additional details: " + frame.body);
 };
 
 function setConnected(connected) {
-    $("#connect").prop("disabled", connected);
-    $("#disconnect").prop("disabled", !connected);
-    if (connected) {
-        $("#conversation").show();
-    }
-    else {
-        $("#conversation").hide();
-    }
-    $("#greetings").html("");
+  $("#connect").prop("disabled", connected);
+  $("#disconnect").prop("disabled", !connected);
+  if (connected) {
+    $("#conversation").show();
+  } else {
+    $("#conversation").hide();
+  }
+  $("#greetings").html("");
 }
 
 function connect() {
-    stompClient.activate();
+  stompClient.activate();
 }
 
 function disconnect() {
-    stompClient.deactivate();
-    setConnected(false);
-    console.log("Disconnected");
+  stompClient.deactivate();
+  setConnected(false);
+  console.log("Disconnected");
 }
 
 function sendName() {
-    stompClient.publish({
-        destination: "/app/display",
-        body: JSON.stringify({'newText': $("#name").val()})
-    });
+  stompClient.publish({
+    destination: "/app/display",
+    body: JSON.stringify({ newText: $("#name").val() }),
+  });
 }
 
 function showGreeting(message) {
-    $("#displayed").append("<tr><td>" + message + "</td></tr>");
+  $("#displayed").append("<tr><td>" + message + "</td></tr>");
 }
 
 $(function () {
-    connect();
-    $("form").on('submit', (e) => e.preventDefault());
-    $( "#connect" ).click(() => connect());
-    $( "#disconnect" ).click(() => disconnect());
-    $( "#send" ).click(() => sendName());
+  connect();
+  $("form").on("submit", (e) => e.preventDefault());
+  $("#connect").click(() => connect());
+  $("#disconnect").click(() => disconnect());
+  $("#send").click(() => sendName());
 });
