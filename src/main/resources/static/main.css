@@ -15,7 +15,6 @@ body {
 }
 
 #display-text {
-  font-size: 40vw;
-  font-size: calc(30vw + 30vh);
+  font-size: calc(25vw + 15vh);
   text-align: center;
 }
