@@ -1,6 +1,7 @@
 const stompClient = new StompJs.Client({
   brokerURL: "ws://pi4.local:8080/display-app",
 });
+// localhost
 
 stompClient.onConnect = (frame) => {
   console.log("Connected: " + frame);
@@ -30,10 +31,15 @@ function sendNewText() {
 }
 
 function showNewTextDisplay(message) {
-  if (message.length > 3) {
-    document.getElementById("display-text").style.fontSize = "15vw";
+  if ((message = "DOXOLOGY")) {
+    document.getElementById("display-text").style.fontSize =
+      "font-size: calc(10vw + 10vh)";
+  } else if ((message = "I am a Member of the Church of Christ")) {
+    document.getElementById("display-text").style.fontSize =
+      "font-size: calc(6vw + 6vh)";
   } else {
-    document.getElementById("display-text").style.fontSize = "40vw";
+    document.getElementById("display-text").style.fontSize =
+      "calc(30vw + 30vh)";
   }
   $("#display-text").text(message);
 }
