@@ -32,7 +32,6 @@ function sendNewText() {
 }
 
 function showNewTextDisplay(message) {
-  console.log(message == "DOXOLOGY");
   if (message == "DOXOLOGY") {
     document.getElementById("display-text").style.fontSize = "calc(9vw + 9vh)";
   } else if (message == "I am a Member of the Church of Christ") {
