@@ -1,5 +1,5 @@
 const stompClient = new StompJs.Client({
-  brokerURL: "ws://pi4.local:8080/display-app",
+  brokerURL: "ws://pi4.localk:8080/display-app",
 });
 // pi4.local
 // localhost
