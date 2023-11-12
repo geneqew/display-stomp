@@ -2,7 +2,5 @@ display-config:
   defaultDisplay: ---
   useKeyWhenNotPresent: true
   displayMap:
-    000: DOX
-    888: Pasalamat
-    999: INC
-    1000: Iglesia Ni Cristo
+    000: DOXOLOGY
+    999: I am a Member of the Church of Christ
