@@ -18,3 +18,7 @@ body {
   font-size: calc(25vw + 15vh);
   text-align: center;
 }
+
+.history_list {
+  width: 50%;
+}
