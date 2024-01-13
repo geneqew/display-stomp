@@ -1,8 +1,6 @@
 const stompClient = new StompJs.Client({
-  brokerURL: "ws://pi4.local:8080/display-app",
+  brokerURL: originString.toString(),
 });
-// pi4.local
-// localhost
 
 stompClient.onConnect = (frame) => {
   setConnected(true);
@@ -61,7 +59,9 @@ function clearScreen() {
   stompClient.publish({
     destination: "/app/display",
     body: "\{\"newText\":\"\"\}"
-  })
+  });
+  $("#name").val("");
+  $("#name").focus();
 }
 
 let reshowNum = 0;
@@ -72,12 +72,22 @@ function showGreeting(message) {
       reshowNum +
       '">' +
       message +
-      '</td> <td><button class="btn btn-default btn-lg" onclick="reshow(\'rename' +
+      '</td> <td><button class="btn btn-lg btn-dark" onclick="reshow(\'rename' +
       reshowNum +
       "\')\">Reshow</button></td> </tr>"
   );
   reshowNum += 1;
 }
+
+// const numList = [];
+
+// function addToList() {
+//   numList.push($("#name").val())
+// }
+
+// function removeFromList(n) {
+//   numList.splice(n, 1);
+// }
 
 $(function () {
   connect();
