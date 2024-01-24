@@ -45,11 +45,49 @@ function sendName() {
     destination: "/app/display",
     body: JSON.stringify({ newText: $("#name").val() }),
   });
+  console.log(JSON.stringify({ newText: $("#name").val() }));
 }
 
-function showGreeting(message) {
-  $("#displayed").append("<tr><td>" + message + "</td></tr>");
+function reshow(boxName) {
+  stompClient.publish({
+    destination: "/app/display",
+    body: JSON.stringify({ newText: $(`#${boxName}`).text() }),
+  });
 }
+
+function clearScreen() {
+  stompClient.publish({
+    destination: "/app/display",
+    body: "\{\"newText\":\"\"\}"
+  });
+  $("#name").val("");
+  $("#name").focus();
+}
+
+let reshowNum = 0;
+
+function showGreeting(message) {
+  $("#displayed").append(
+    '<tr><td id="rename' +
+      reshowNum +
+      '">' +
+      message +
+      '</td> <td><button class="btn btn-lg btn-dark" onclick="reshow(\'rename' +
+      reshowNum +
+      "\')\">Reshow</button></td> </tr>"
+  );
+  reshowNum += 1;
+}
+
+// const numList = [];
+
+// function addToList() {
+//   numList.push($("#name").val())
+// }
+
+// function removeFromList(n) {
+//   numList.splice(n, 1);
+// }
 
 $(function () {
   connect();

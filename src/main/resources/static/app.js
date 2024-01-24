@@ -30,10 +30,13 @@ function sendNewText() {
 }
 
 function showNewTextDisplay(message) {
-  if (message.length > 3) {
-    document.getElementById("display-text").style.fontSize = "15vw";
+  if (message == "DOXOLOGY") {
+    document.getElementById("display-text").style.fontSize = "calc(9vw + 9vh)";
+  } else if (message == "I am a Member of the Church of Christ") {
+    document.getElementById("display-text").style.fontSize = "calc(6vw + 6vh)";
   } else {
-    document.getElementById("display-text").style.fontSize = "40vw";
+    document.getElementById("display-text").style.fontSize =
+      "calc(25vw + 15vh)";
   }
   $("#display-text").text(message);
 }
