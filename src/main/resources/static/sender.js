@@ -1,6 +1,7 @@
 const stompClient = new StompJs.Client({
-  brokerURL: "ws://pi4.local:8080/display-app",
+  brokerURL: "ws://localhost:8080/display-app",
 });
+// pi4.local
 
 stompClient.onConnect = (frame) => {
   setConnected(true);
@@ -81,13 +82,13 @@ function showGreeting(message) {
 
 // const numList = [];
 
-// function addToList() {
+function addToList() {
 //   numList.push($("#name").val())
-// }
+}
 
-// function removeFromList(n) {
+function removeFromList(n) {
 //   numList.splice(n, 1);
-// }
+}
 
 $(function () {
   connect();

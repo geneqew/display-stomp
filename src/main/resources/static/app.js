@@ -1,6 +1,7 @@
 const stompClient = new StompJs.Client({
-  brokerURL: "ws://pi4.local:8080/display-app",
+  brokerURL: "ws://localhost:8080/display-app",
 });
+// pi4.local
 
 stompClient.onConnect = (frame) => {
   console.log("Connected: " + frame);
