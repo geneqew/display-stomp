@@ -1,5 +1,5 @@
 const stompClient = new StompJs.Client({
-  brokerURL: "ws://localhost:8080/display-app",
+  brokerURL: "ws://pi4.local:8080/display-app",
 });
 // pi4.local
 
@@ -44,15 +44,15 @@ function disconnect() {
 function sendName() {
   stompClient.publish({
     destination: "/app/display",
-    body: JSON.stringify({ newText: $("#name").val() }),
+    body: JSON.stringify({newText: $("#name").val()}),
   });
-  console.log(JSON.stringify({ newText: $("#name").val() }));
+  console.log(JSON.stringify({newText: $("#name").val()}));
 }
 
 function reshow(boxName) {
   stompClient.publish({
     destination: "/app/display",
-    body: JSON.stringify({ newText: $(`#${boxName}`).text() }),
+    body: JSON.stringify({newText: $(`#${boxName}`).text()}),
   });
 }
 
@@ -70,12 +70,12 @@ let reshowNum = 0;
 function showGreeting(message) {
   $("#displayed").append(
     '<tr><td id="rename' +
-      reshowNum +
-      '">' +
-      message +
-      '</td> <td><button class="btn btn-lg btn-dark" onclick="reshow(\'rename' +
-      reshowNum +
-      "\')\">Reshow</button></td> </tr>"
+    reshowNum +
+    '">' +
+    message +
+    '</td> <td><button class="btn btn-lg btn-dark" onclick="reshow(\'rename' +
+    reshowNum +
+    "\')\">Reshow</button></td> </tr>"
   );
   reshowNum += 1;
 }

@@ -1,5 +1,5 @@
 const stompClient = new StompJs.Client({
-  brokerURL: "ws://localhost:8080/display-app",
+  brokerURL: "ws://pi4.local:8080/display-app",
 });
 // pi4.local
 
@@ -26,7 +26,7 @@ function connect() {
 function sendNewText() {
   stompClient.publish({
     destination: "/app/display",
-    body: JSON.stringify({ newText: $("#name").val() }),
+    body: JSON.stringify({newText: $("#name").val()}),
   });
 }
 
