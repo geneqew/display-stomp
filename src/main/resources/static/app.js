@@ -31,13 +31,11 @@ function sendNewText() {
 }
 
 function showNewTextDisplay(message) {
-  if (message == "DOXOLOGY") {
-    document.getElementById("display-text").style.fontSize = "calc(9vw + 9vh)";
-  } else if (message == "I am a Member of the Church of Christ") {
-    document.getElementById("display-text").style.fontSize = "calc(6vw + 6vh)";
+  if (message.toString().length > 3) {
+    document.getElementById("display-text").style.fontSize = "calc(9vw + 10vh)";
   } else {
     document.getElementById("display-text").style.fontSize =
-      "calc(25vw + 15vh)";
+      "calc(30vw + 30vh)";
   }
   $("#display-text").text(message);
 }
