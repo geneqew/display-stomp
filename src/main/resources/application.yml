@@ -2,5 +2,5 @@ display-config:
   defaultDisplay: ---
   useKeyWhenNotPresent: true
   displayMap:
-    000: DOXOLOGY
+    000: Doxology
     999: INC
