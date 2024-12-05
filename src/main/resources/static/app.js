@@ -1,6 +1,7 @@
 const stompClient = new StompJs.Client({
   brokerURL: "ws://pi4.local:8080/display-app",
 });
+// pi4.local
 
 stompClient.onConnect = (frame) => {
   console.log("Connected: " + frame);
@@ -25,15 +26,16 @@ function connect() {
 function sendNewText() {
   stompClient.publish({
     destination: "/app/display",
-    body: JSON.stringify({ newText: $("#name").val() }),
+    body: JSON.stringify({newText: $("#name").val()}),
   });
 }
 
 function showNewTextDisplay(message) {
-  if (message.length > 3) {
-    document.getElementById("display-text").style.fontSize = "15vw";
+  if (message.toString().length > 3) {
+    document.getElementById("display-text").style.fontSize = "calc(9vw + 10vh)";
   } else {
-    document.getElementById("display-text").style.fontSize = "40vw";
+    document.getElementById("display-text").style.fontSize =
+      "calc(30vw + 30vh)";
   }
   $("#display-text").text(message);
 }
